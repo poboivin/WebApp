@@ -1,47 +1,66 @@
 const fs = require('fs');
-const http = require('http');
+const https = require('https');
 const WebSocket = require('ws');
 
-const server = http.createServer(function (req, res) {
-    res.write('Hello World!'); //write a response to the client
-    res.end(); //end the response
-  })
+const server = https.createServer({
+    cert: fs.readFileSync('/Path'),
+    key: fs.readFileSync('/Path')
+   });
 
 
-var id = 0;
-var lookup = {};
+//var lookup = {};
 const wss = new WebSocket.Server({ server  }) //port: 8080
 console.log(`ServerStarted`)
-var currentEmotion = 3;
 
-wss.on('connection', ws => 
+wss.on('connection', function connection (ws,req) 
 {
     console.log(`connection incomming`)
 
-    ws.id = id++;
-    lookup[ws.id] = ws;
+    ip = req.headers['x-forwarded-for'].split(/\s*,\s*/)[0];
+    console.log(ip);
+    ws.id = ip;
+
+
+    //console.log(JSON.stringify(ws.ClientOptions.localAddress));
+   // var propValue;
+   // for(var propName in ws) {
+   //     propValue = ws[propName]
+    
+  //      console.log(propName,propValue);
+   // }
     ws.send('Welcome To PierChat')
-    var EmotionMessage = {};
-    EmotionMessage.type = "emotion";
-    EmotionMessage.Emotion = currentEmotion;
+   // var EmotionMessage = {};
+  //  EmotionMessage.type = "emotion";
+ //   EmotionMessage.Emotion = currentEmotion;
    
-    ws.send(JSON.stringify(EmotionMessage));
+ //   ws.send(JSON.stringify(EmotionMessage));
 
     ws.on('message', message => {
         console.log(`Received message => ${message}`)
+    
+        var countMessage = {};
+      //  countMessage.test = "test2";
+        countMessage.clientNumber =   wss.clients. size;
+        ws.send(JSON.stringify(countMessage));
+        console.log(JSON.stringify(countMessage));
+
+        var msgTosend;
         try{
-            var EmotionMessage =  JSON.parse(message);
-            if(EmotionMessage.type == "emotion"){
-                currentEmotion = EmotionMessage.Emotion;
-            }
-        }
-        catch{
+            var JsonMessage =  JSON.parse(message);
+            JsonMessage.address =    ws.id;
+            msgTosend = JSON.stringify(JsonMessage);
 
         }
-        
+        catch{
+            msgTosend = message;
+
+        }
+
         wss.clients.forEach(function each(client) {
             if (client !== ws && client.readyState === WebSocket.OPEN) {
-              client.send(message);
+
+                client.send(msgTosend);
+               
             }
        
         // ws.send("copy that sir")
@@ -50,21 +69,7 @@ wss.on('connection', ws =>
     })
 })
 
-setInterval(() =>{
-    wss.clients.forEach(function each(client) {
-        if (client.readyState === WebSocket.OPEN) {
-            currentEmotion = 0;
-            var EmotionMessage = {};
-            EmotionMessage.type = "emotion";
-            EmotionMessage.Emotion = currentEmotion;
-   
-            client.send(JSON.stringify(EmotionMessage));
-        }
-   
-    // ws.send("copy that sir")
-    })
 
-} , 5000);
 
 server.listen(8080);
 
