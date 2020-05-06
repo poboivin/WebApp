@@ -1,0 +1,201 @@
+@font-face {
+    font-family: instageFont1;
+    src: url("Linotype - NHaasGroteskTXPro-55Rg.otf");
+  }
+  hr{
+    border: 1px solid #41c1ca;
+  
+  }
+  div  {
+    font-family: instageFont1;
+  }
+  p  {
+    font-family: instageFont1;
+  }
+  span{
+    font-family: instageFont1;
+  }
+  .resultBarBackground {
+      background-clip: content-box;
+      background-color: lightgray;
+      padding-left: 60px;
+  
+  }
+  
+  .resultBar {
+    width: 40%;
+    height: 50px;
+   
+  
+    background-color: #41c1ca;
+  }
+  .answertext{
+    padding-left: 5px;
+    width: 70%;
+  
+  }
+  .action-Rep{
+    font-size: 1.17em;
+  }
+  .resultText{
+    padding-right: 5px;
+    text-align: center;
+    float: right;  
+    font-size: 16px;
+  }
+    /* The container */
+    .answerContainer {
+      display: block;
+      position: relative;
+    
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: 20px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    /* Hide the browser's default radio button */
+    .answerContainer input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+    .spanImage{
+      background-image: url('square box 01.png');
+      background-repeat: round;
+      position: absolute;
+      height: 50px;
+      width: 50px;
+  }
+    /* background-color: #eee;
+     Create a custom radio button
+     
+     background-repeat: round;
+      background-color: white;
+  
+      background-image:url("square box 01.png");
+      */
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 50px;
+      width: 50px;
+      display: block;
+      border: solid #414042;
+  
+      
+      
+    }
+  
+    /* On mouse-over, add a grey background color   */
+  
+    .answerContainer:hover input ~ .checkmark {
+      background-color: #ccc;
+    }
+  
+    /* Create the indicator (the dot/circle - hidden when not checked)   */
+  
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+      width: 50px;
+      height: 50px;
+      bottom: 10px;
+      left: 8px;
+      background-image:url("check mark.png");
+      background-repeat: round;
+  
+    }
+    /* Show the indicator (dot/circle) when checked   */
+  
+    .answerContainer input:checked ~ .checkmark:after {
+      display: block;
+    }
+    /* Style the indicator (dot/circle)  
+  
+    .answerContainer .checkmark:after {
+      left: 18px;
+    top: 10px;
+    width: 10px;
+    height: 20px;
+    border: solid #2196F3;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  
+    }
+      */
+    
+    .btn {
+      border: none;
+      color: white;
+      padding: 14px 28px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 16px;
+    }
+    
+    
+    
+  
+    
+    .submit {background-color: #2196F3;} /* blue*/
+    .submit:hover {background-color: #0b7dda;}
+    div.solid {border-style: solid;}
+    .qualitative-selector{
+      text-align:center;
+      margin: 0 auto;
+    }
+    .qualitative-selector input{ /* hide radio*/
+      margin:0;padding:0;
+      -webkit-appearance:none;
+         -moz-appearance:none;
+              appearance:none;
+  }
+  .positive{background-image:url("happy face 01.png");}
+  .negative{background-image:url("happy face.png");}
+  .neutral{background-image:url("happy face 01.png");}
+  
+  
+  .qualitative-selector input:active +.drinkcard-cc{opacity: .9;}
+  .qualitative-selector input:checked +.drinkcard-cc{
+      -webkit-filter: none;
+         -moz-filter: none;
+              filter: none;
+  }
+  .drinkcard-cc{
+      cursor:pointer;
+      background-size:contain;
+      background-repeat:no-repeat;
+      display:inline-block;
+      width:70px;height:70px;
+      padding-right: 15px;
+      padding-left: 15px;
+      -webkit-transition: all 100ms ease-in;
+         -moz-transition: all 100ms ease-in;
+              transition: all 100ms ease-in;
+      -webkit-filter: brightness(1.8) grayscale(.6) opacity(.7);
+         -moz-filter: brightness(1.8) grayscale(.6) opacity(.7);
+              filter: brightness(1.8) grayscale(.6) opacity(.7);
+  }
+  .drinkcard-cc:hover{
+      -webkit-filter: brightness(1.2) grayscale(.3) opacity(.9);
+         -moz-filter: brightness(1.2) grayscale(.3) opacity(.9);
+              filter: brightness(1.2) grayscale(.3) opacity(.9);
+  }
+  .Portrait{
+    vertical-align: middle;
+     width:50px;
+     height:50px;
+  
+  }
+  .main{
+    width: 40%;
+     margin: 0 auto;
+  }

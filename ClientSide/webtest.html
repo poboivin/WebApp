@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  
+<script id= "template-answer" type="text/template">
+
+  <label class=" answerContainer">
+    <input type="radio" name="radio"  onclick="SendAnswer(this)" value="1" >
+    <span class="checkmark"></span>
+    <div class= "resultBarBackground">
+      <span class="answertext" style="float: left;  "> One</span>
+      <span class="resultText" >(1) 100%</span>
+      <div class="resultBar"></div>
+    </div>
+  
+  </label>
+  
+  </script>
+  
+  <script id= "template-question" type="text/template">
+  
+    <p class="question" style = " font-size: 1.5em; ">1.This is a poll Question</p>
+  
+    
+  </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="webPoll.js"></script>
+
+<link rel="stylesheet" type="text/css" href="webPoll.css">
+
+</head>
+
+<body>
+
+<div class="main"  >
+  <img src="InstageLogo@512.png" alt="InstageLogo"  style="width:100px;height:100x;">
+  <img src="happy face 01.png" alt="InstageLogo"  style="width:50px;height:50px; float:right">
+  <div class="action-Info"  >
+    <p > <b> <u class = "Name">William</u> </b>
+      <img class = "Portrait" src="https://instagevr.com/wp-content/uploads/2020/01/William-D.png" alt="Portrait">
+
+    </p> 
+    <p > <i class = "action-Text">is pizza a real food?</i>
+    </p>
+  </div>
+  <h3>Observer Checks</h3>
+  <hr>
+  <div class="answers"></div>
+
+
+  <p class="action-Rep" >Action Response</p>
+	<div class="qualitative-selector">
+    <input id="visa" type="radio" name="credit-card" value="visa" />
+    <label class="drinkcard-cc negative" for="visa"></label>
+    <input id="mastercard" type="radio" name="credit-card" value="mastercard" />
+    <label class="drinkcard-cc neutral"for="mastercard"></label>
+    <input id="mastercard2" type="radio" name="credit-card" value="mastercard" />
+    <label class="drinkcard-cc positive"for="mastercard2"></label>
+  </div>
+
+</div>
+
+</body>
+</html>
+
+
+
+
+
