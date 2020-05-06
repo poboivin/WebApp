@@ -21,9 +21,9 @@ $(document).ready(function(){
  
  var poll =  JSON.parse(textPoll);
 
-setPoll(poll.PollInfoList);
-  //ConnectSocket();
-  setResults(Testresults)
+//setPoll(poll.PollInfoList);
+  ConnectSocket();
+  //setResults(Testresults)
   ActionHide();
 });
 
@@ -73,6 +73,8 @@ function ConnectSocket(){
                       if(ChatMessage.hide == false){
                         setResults(ChatMessage);
 
+                      }else{
+                        ResultsHide();
                       }
                     }
 
@@ -131,7 +133,7 @@ function ResultsHide(){
 function resultsShow(){
   $(".resultBarBackground").css("background-color","lightgray");
   $(".resultBar").css("background-color","#41c1ca");
-  $(".resultText").hide();
+  $(".resultText").show();
 }
 function setResults(results){
   resultsShow();
