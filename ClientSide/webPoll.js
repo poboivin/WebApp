@@ -111,15 +111,26 @@ function SendMessage(message)
   }
 }
 function setPoll(poll){
-
-  console.log("yo");
+  ActionHide();
 
   
   for(var i = 0; i <  poll.length; i++)
   {
-    SetQuestion(poll[i].QuestionText);
-    SetAnswerText(poll[i])
+    if(poll[i].IsAction == false)
+    {
+      SetQuestion(poll[i].QuestionText);
+      SetAnswerText(poll[i])
+    }
+    else  
+    {
+      $(".action-Text").text(poll[i].QuestionText);
+      $(".qualitative-selector").find("input").attr("data-questionIndex",i)
+
+      ActionShow();
+    }
+    
   }
+
   ResultsHide();
  
   
@@ -182,27 +193,30 @@ function SetAnswerText(answers)
 
  for(var i = 0;  i < answers.AnwserText.length; i++)
  {
- 	  var _answer= answers.AnwserText[i];
-    $(".answers").append(answerhtml);   
+    var _answer= answers.AnwserText[i];
+    
+    
+      $(".answers").append(answerhtml);      
 
+      $(".answertext").last().html(_answer);
+      $(".answerContainer").last().find("input").val(i);;
+      $(".answerContainer").last().find("input").attr("data-questionIndex", answers.QuestionIndex)
+      $(".answerContainer").last().find("input").attr("name", answers.QuestionText)
+      if(answers.IsMultiple)
+      {
+        $(".answerContainer").last().find("input").attr("type", "checkbox")
+      }
+      else
+      {  
+        $(".checkmark").last().css("border-radius", "30px");
+      }
    
-
-    $(".answertext").last().text(_answer);
-    $(".answerContainer").last().find("input").val(i);;
-    $(".answerContainer").last().find("input").attr("data-questionIndex", answers.QuestionIndex)
-    $(".answerContainer").last().find("input").attr("name", answers.QuestionText)
-    if(answers.IsMultiple){
-
-      $(".answerContainer").last().find("input").attr("type", "checkbox")
-    }
-    else{  
-     $(".checkmark").last().css("border-radius", "30px")
-     
-
-    }
+    
+  }
+  
   //  $(".checkmark").last().hide();
 
- }
+ 
 } 
 
 

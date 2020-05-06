@@ -53,11 +53,11 @@
 
   <p class="action-Rep" >Action Response</p>
 	<div class="qualitative-selector">
-    <input id="visa" type="radio" name="credit-card" value="visa" />
+    <input id="visa" type="radio" name="credit-card"  onclick="SendAnswer(this)" value="0" />
     <label class="drinkcard-cc negative" for="visa"></label>
-    <input id="mastercard" type="radio" name="credit-card" value="mastercard" />
+    <input id="mastercard" type="radio" name="credit-card" onclick="SendAnswer(this)" value="1" />
     <label class="drinkcard-cc neutral"for="mastercard"></label>
-    <input id="mastercard2" type="radio" name="credit-card" value="mastercard" />
+    <input id="mastercard2" type="radio" name="credit-card"  onclick="SendAnswer(this)" value="2" />
     <label class="drinkcard-cc positive"for="mastercard2"></label>
   </div>
 
